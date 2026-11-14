@@ -1,6 +1,5 @@
 package org.fossify.contacts.activities
 
-import android.content.ContentUris
 import android.content.Intent
 import android.os.Bundle
 import org.fossify.commons.extensions.toast
@@ -17,13 +16,7 @@ class ViewGroupActivity : SimpleActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val groupId = intent.data?.let {
-            try {
-                ContentUris.parseId(it)
-            } catch (e: Exception) {
-                -1L
-            }
-        } ?: -1L
+        val groupId = intent.data?.lastPathSegment?.toLongOrNull() ?: -1L
 
         if (groupId < 0) {
             toast(org.fossify.commons.R.string.unknown_error_occurred)
