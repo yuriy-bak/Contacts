@@ -94,6 +94,20 @@
             android:parentActivityName=".activities.MainActivity" />
 
         <activity
+            android:name=".activities.ViewGroupActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:theme="@style/TranslucentTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/group" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".activities.ViewContactActivity"
             android:configChanges="orientation"
             android:exported="true"
@@ -107,7 +121,6 @@
 
                 <data android:mimeType="vnd.android.cursor.dir/person" />
                 <data android:mimeType="vnd.android.cursor.dir/contact" />
-                <data android:mimeType="vnd.android.cursor.item/group" />
             </intent-filter>
 
             <intent-filter>
